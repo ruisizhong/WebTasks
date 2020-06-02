@@ -93,10 +93,10 @@ function clearmove() {
 }
 </script>
 <div style="text-align:center;width:600px;">
-  <button onclick="move('up')""clearmove()">UP</button><br>
-  <button onclick="move('left')""clearmove()">LEFT</button>
-  <button onclick="move('right')""clearmove()">RIGHT</button><br>
-  <button onclick="move('down')""clearmove()">DOWN</button>
+  <button onclick="move('up')" onmouseup="clearmove()" ontouchstart="move('up')">UP</button><br>
+  <button onclick="move('left')" onmouseup="clearmove()" ontouchstart="move('left')">LEFT</button>
+  <button onclick="move('right')" onmouseup="clearmove()" ontouchstart="move('right')">RIGHT</button><br>
+  <button onclick="move('down')" onmouseup="clearmove()" ontouchstart="move('down')">DOWN</button>
 </div>
 
 </body>
