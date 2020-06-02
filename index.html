@@ -13,9 +13,11 @@ canvas {
 <script>
 
 var myGamePiece;
+var myBackground;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "Smiley.jpg", 10, 120, "image");
+    myGamePiece = new component(30, 30, "smiley.gif", 10, 120, "image");
+    myBackground = new component(656, 270, "Path.jpg", 0, 0, "image");
     myGameArea.start();
 }
 
@@ -64,45 +66,39 @@ function component(width, height, color, x, y, type) {
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY;        
-    }
+    }    
 }
 
 function updateGameArea() {
     myGameArea.clear();
-    myGamePiece.newPos();
+    myBackground.newPos();    
+    myBackground.update();
+    myGamePiece.newPos();    
     myGamePiece.update();
 }
 
-function moveup() {
-    myGamePiece.speedY = -1; 
-}
-
-function movedown() {
-    myGamePiece.speedY = 1; 
-}
-
-function moveleft() {
-    myGamePiece.speedX = -1; 
-}
-
-function moveright() {
-    myGamePiece.speedX = 1; 
+function move(dir) {
+    myGamePiece.image.src = "angry.gif";
+    if (dir == "up") {myGamePiece.speedY = -1; }
+    if (dir == "down") {myGamePiece.speedY = 1; }
+    if (dir == "left") {myGamePiece.speedX = -1; }
+    if (dir == "right") {myGamePiece.speedX = 1; }
 }
 
 function clearmove() {
+    myGamePiece.image.src = "smiley.gif";
     myGamePiece.speedX = 0; 
     myGamePiece.speedY = 0; 
 }
 </script>
 <div style="text-align:center;width:480px;">
-  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
-  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
-  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
-  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+  <button onmousedown="move('up')" onmouseup="clearmove()" ontouchstart="move('up')">UP</button><br><br>
+  <button onmousedown="move('left')" onmouseup="clearmove()" ontouchstart="move('left')">LEFT</button>
+  <button onmousedown="move('right')" onmouseup="clearmove()" ontouchstart="move('right')">RIGHT</button><br><br>
+  <button onmousedown="move('down')" onmouseup="clearmove()" ontouchstart="move('down')">DOWN</button>
 </div>
 
-<p>The component constructor uses the built-in image object to draw images onto the canvas.</p>
-
+<p>Update the background before updating other components to make sure the other components are dispalyed on top of the background.</p>
 </body>
 </html>
 
