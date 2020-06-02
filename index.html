@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-  
-<head>
-<title>Instructions</title>
-</head>
-  
 <body>
-  <h1>Below is a map. Please select the path you would take from the start point to the end point using the buttons to move. </p>
-  <img src="Path.png" alt="Path" usemap="#workmap" width="600" height="500">
-  <div style="text-align:center;width:600px;">
-    <button onclick="moveup()">UP</button><br>
-    <button onclick="moveleft()">LEFT</button>
-    <button onclick="moveright()">RIGHT</button><br>
-    <button onclick="movedown()">DOWN</button>
-  </div>
+
+<h1>Below is a map. Please use the buttons to choose which path you would take from the start to the end.</h1>
+
+<img id="path" width="220" height="277"
+src="Path.png" alt="Path">
+
+<canvas id="myMap" width="600" height="500">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+window.onload = function() {
+    var canvas = document.getElementById("myMap");
+    var ctx = canvas.getContext("2d");
+    var img = document.getElementById("Path");
+   ctx.drawImage(img, 10, 10);
+};
+</script>
+
 </body>
 </html>
