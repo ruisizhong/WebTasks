@@ -80,18 +80,23 @@ function updateCanvas() {
 
 function move(dir) {
     mySubject.image.src = "smiley.gif";
-    if (dir == "up") {mySubject.y = -100; }
-    if (dir == "down") {mySubject.y = 100; }
-    if (dir == "left") {mySubject.x = -100; }
-    if (dir == "right") {mySubject.x = 100; }
+    if (dir == "up") {mySubject.speedY = -1; }
+    if (dir == "down") {mySubject.speedY = 1; }
+    if (dir == "left") {mySubject.speedX = -1; }
+    if (dir == "right") {mySubject.speedX = 1; }
 }
 
+function clearmove() {
+    mySubject.image.src = "smiley.gif";
+    mySubject.speedX = 0; 
+    mySubject.speedY = 0; 
+}
 </script>
 <div style="text-align:center;width:600px;">
-  <button onclick="move('up')">UP</button><br>
-  <button onclick="move('left')">LEFT</button>
-  <button onclick="move('right')">RIGHT</button><br>
-  <button onclick="move('down')">DOWN</button>
+  <button onmousedown="move('up')" onmouseup="clearmove()" ontouchstart="move('up')">UP</button><br>
+  <button onmousedown="move('left')" onmouseup="clearmove()" ontouchstart="move('left')">LEFT</button>
+  <button onmousedown="move('right')" onmouseup="clearmove()" ontouchstart="move('right')">RIGHT</button><br>
+  <button onmousedown="move('down')" onmouseup="clearmove()" ontouchstart="move('down')">DOWN</button>
 </div>
 
 </body>
