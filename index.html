@@ -12,22 +12,10 @@ canvas {
 <body onload="startGame()">
 <script>
 
-var myPerson;
+var myGamePiece;
 
 function startGame() {
-    myPerson = new component(30, 30, "smiley.jpg", 10, 120, "image");
-    
-    var canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext("2d");
-
-    var background = new Image();
-    background.src = Path.jpg;
-
-    // Make sure the image is loaded first otherwise nothing will draw.
-    background.onload = function(){
-     ctx.drawImage(background,0,0);   
-    }
-    
+    myGamePiece = new component(30, 30, "smiley.gif", 10, 120, "image");
     myGameArea.start();
 }
 
@@ -81,32 +69,32 @@ function component(width, height, color, x, y, type) {
 
 function updateGameArea() {
     myGameArea.clear();
-    myPerson.newPos();
-    myPerson.update();
+    myGamePiece.newPos();
+    myGamePiece.update();
 }
 
 function moveup() {
-    myPerson.speedY = -1; 
+    myGamePiece.speedY = -1; 
 }
 
 function movedown() {
-    myPerson.speedY = 1; 
+    myGamePiece.speedY = 1; 
 }
 
 function moveleft() {
-    myPerson.speedX = -1; 
+    myGamePiece.speedX = -1; 
 }
 
 function moveright() {
-    myPerson.speedX = 1; 
+    myGamePiece.speedX = 1; 
 }
 
 function clearmove() {
-    myPerson.speedX = 0; 
-    myPerson.speedY = 0; 
+    myGamePiece.speedX = 0; 
+    myGamePiece.speedY = 0; 
 }
 </script>
-<div style="text-align:center;width:600px;">
+<div style="text-align:center;width:480px;">
   <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
   <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
   <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
