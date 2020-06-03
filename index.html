@@ -17,7 +17,7 @@ var mySubject;
 var myBackground;
 
 function startExperiment() {
-    mySubject = new component(30, 30, "smiley.gif", 161, 566, "image");
+    mySubject = new component(40, 40, "smiley.gif", 161, 566, "image");
     myBackground = new component(822, 674, "Path.jpg", 0, 0, "image");
     myCanvas.start();
 }
@@ -92,7 +92,7 @@ function clearmove() {
     mySubject.speedY = 0; 
 }
 </script>
-<div style="text-align:center;width:600px;">
+<div style="text-align:center;width:822px;">
   <button onmousedown="move('up')" onmouseup="clearmove()" ontouchstart="move('up')">UP</button><br>
   <button onmousedown="move('left')" onmouseup="clearmove()" ontouchstart="move('left')">LEFT</button>
   <button onmousedown="move('right')" onmouseup="clearmove()" ontouchstart="move('right')">RIGHT</button><br>
