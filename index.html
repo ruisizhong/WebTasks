@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experiment</title>
 <style>
 canvas {
     border:1px solid #d3d3d3;
@@ -17,16 +17,16 @@ var mySubject;
 var myBackground;
 
 function startExperiment() {
-    mySubject = new component(30, 30, "smiley.gif", 103, 404, "image");
-    myBackground = new component(600, 500, "Path.jpg", 0, 0, "image");
+    mySubject = new component(30, 30, "smiley.gif", 161, 566, "image");
+    myBackground = new component(822, 674, "Path.jpg", 0, 0, "image");
     myCanvas.start();
 }
 
 var myCanvas = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 600;
-        this.canvas.height = 500;
+        this.canvas.width = 822;
+        this.canvas.height = 674;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
