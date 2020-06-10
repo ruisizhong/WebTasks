@@ -1,108 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Experiment</title>
-<style>
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-}
-</style>
+    <style>
+        svg {
+            width: 70px;
+            height: 70px;
+        }
+        svg:hover {
+            fill: red;
+        }
+
+    </style>
 </head>
-    
-<body onload="startExperiment()">
-<script>
+<body>
 
-var mySubject;
-var myBackground;
-
-function startExperiment() {
-    <svg height="100" width="100">
+<svg height="100" width="100">
   <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
   Sorry, your browser does not support inline SVG.  
 </svg> 
-    mySubject = new component(40, 40, "smiley.gif", 146, 550, "image");
-    myBackground = new component(822, 674, "Path.jpg", 0, 0, "image");
-    myCanvas.start();
-}
-
-var myCanvas = {
-    canvas : document.createElement("canvas"),
-    start : function() {
-        this.canvas.width = 822;
-        this.canvas.height = 674;
-        this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.frameNo = 0;
-        this.interval = setInterval(updateCanvas, 20);
-        },
-    clear : function() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    },
-    stop : function() {
-        clearInterval(this.interval);
-    }
-}
-
-function component(width, height, color, x, y, type) {
-    this.type = type;
-    if (type == "image") {
-        this.image = new Image();
-        this.image.src = color;
-    }
-    this.width = width;
-    this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;    
-    this.x = x;
-    this.y = y;    
-    this.update = function() {
-        ctx = myCanvas.context;
-        if (type == "image") {
-            ctx.drawImage(this.image, 
-                this.x, 
-                this.y,
-                this.width, this.height);
-        } else {
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-    }
-    this.newPos = function() {
-        this.x += this.speedX;
-        this.y += this.speedY;        
-    }    
-}
-
-function updateCanvas() {
-    myCanvas.clear();
-    myBackground.newPos();    
-    myBackground.update();
-    mySubject.newPos();    
-    mySubject.update();
-}
-
-function move(dir) {
-    mySubject.image.src = "smiley.gif";
-    if (dir == "up") {mySubject.speedY = -1; }
-    if (dir == "down") {mySubject.speedY = 1; }
-    if (dir == "left") {mySubject.speedX = -1; }
-    if (dir == "right") {mySubject.speedX = 1; }
-}
-
-function clearmove() {
-    mySubject.image.src = "smiley.gif";
-    mySubject.speedX = 0; 
-    mySubject.speedY = 0; 
-}
-</script>
-<div style="text-align:center;width:822px;">
-  <button onmousedown="move('up')" onmouseup="clearmove()" ontouchstart="move('up')">UP</button><br>
-  <button onmousedown="move('left')" onmouseup="clearmove()" ontouchstart="move('left')">LEFT</button>
-  <button onmousedown="move('right')" onmouseup="clearmove()" ontouchstart="move('right')">RIGHT</button><br>
-  <button onmousedown="move('down')" onmouseup="clearmove()" ontouchstart="move('down')">DOWN</button>
-</div>
-
+ 
 </body>
 </html>
-
