@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        #map circle:hover {
- 			 fill: lightblue;
-		}
 
-    </style>
+<style>
+button {  
+  padding: 15px 15px;
+  cursor: pointer;
+  outline: none;
+  background-color: darkcyan;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: cadetblue;
+  box-shadow: 0 3px #666;
+  transform: translateY(2px);
+</style>
+
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script> 
+$(document).ready(function(){
+  $("button").click(function(e){
+  	var x = e.pageX;
+    var y = e.pageY;
+    $("div").animate({top: y, left: x});
+  });
+});
+</script> 
 </head>
 <body>
-  
-  <svg height=500 width=500 id="map" x="0px" y="0px"
-     viewBox="0 0 500 500" >
 
-<g>
+<p style='position:absolute; top:60px; left:100px'>Start!</p>
 
-  <line x1="100" y1="100" x2="100" y2="300" style="stroke:rgb(0,0,0);stroke-width:2" />
-  
-  <line x1="100" y1="100" x2="400" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" />
-  
-  <line x1="100" y1="300" x2="400" y2="300" style="stroke:rgb(0,0,0);stroke-width:2" />
-  
-  <line x1="400" y1="100" x2="400" y2="300" style="stroke:rgb(0,0,0);stroke-width:2" />
-  
-  <circle cx="100" cy="100" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
-  
-  <circle cx="100" cy="200" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
-    
-  <circle cx="100" cy="300" r="20" stroke="black" stroke-width="3" fill="red" onclick="alert('You have clicked the circle.')" />
-  
-  <circle cx="200" cy="100" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
-  
-  <circle cx="200" cy="300" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
-  
-  <circle cx="300" cy="100" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
+<button style='position:absolute; top:100px; left:100px'></button>
+<button style='position:absolute; top:100px; left:200px'></button>
+<button style='position:absolute; top:100px; left:300px'></button>
+<button style='position:absolute; top:100px; left:400px'></button>
+<button style='position:absolute; top:200px; left:100px'></button>
+<button style='position:absolute; top:200px; left:400px'></button>
+<button style='position:absolute; top:300px; left:100px'></button>
+<button style='position:absolute; top:300px; left:200px'></button>
+<button style='position:absolute; top:300px; left:300px'></button>
+<button style='position:absolute; top:300px; left:400px'></button>
 
-  <circle cx="300" cy="300" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
+<p style='position:absolute; top:340px; left:400px'>End!</p>
 
-  <circle cx="400" cy="100" r="20" stroke="black" stroke-width="3" fill="green" onclick="alert('You have clicked the circle.')" />
-  
-  <circle cx="400" cy="200" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
 
-  <circle cx="400" cy="300" r="20" stroke="black" stroke-width="3" onclick="alert('You have clicked the circle.')" />
-  
-  <text x="85" y="350" fill="red">Start!</text>
-  
-  <text x="385" y="50" fill="red">End!</text>
-  
-  </g>
-</svg>
-  
- 
+<div id="character" style="border-radius:50%; background:palevioletred; height:30px; width: 30px; position:absolute; top:100px; left:100px"></div>
+
 </body>
-  
 </html>
+
