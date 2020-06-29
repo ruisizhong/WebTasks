@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<head>
 <style>
 button {  
   padding: 15px 15px;
@@ -13,40 +13,109 @@ button {
   border-radius: 50%;
 }
 
-button:hover {
-  background-color: cadetblue;
-  box-shadow: 0 3px #666;
-  transform: translateY(2px);
 </style>
-
-<head>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
 
-<script> 
+//easily set the number of rows and columns in the matrix
+var numRows = 9;
+var numColumns = 3;
+//variable to keep track of the row of the button we are currently on
+var currentRow = 0;
+
+let adjacencyList = [
+	["b1","b2","b5"],
+    ["b2","b1","b3"],
+    ["b3","b2","b4"],
+    ["b4","b3","b6"],
+    ["b5","b1","b7"],
+    ["b6","b4","b10"],
+    ["b7","b5","b8"],
+    ["b8","b7","b9"],
+    ["b9","b8","b10"]
+];
+    
+current = adjacencyList[0][0]; //starting point
+admissible = adjacencyList[0][1]; 
+
 $(document).ready(function(){
+  $("button").hover(function(e){
+    
+    
+    //find the row
+    for(i=0; i<numRows; i++) {
+    
+    	if(current === adjacencyList[i][0]) {
+        	currentRow = i;
+            break;
+        }
+        
+    }
+
+	for(i=1; i<numColumns; i++) {
+    
+    	if (adjacencyList[currentRow][i] === e.currentTarget.id ) {
+       $("button").filter("#" + adjacencyList[currentRow][i]).css("background-color", "cadetblue");  
+    }
+    
+    }
+    
+    
+    
+  },
+  
+  function(){
+    $("button").css("background-color", "darkcyan");
+  }
+  
+  ); 
+  
   $("button").click(function(e){
-  	var x = e.pageX;
-    var y = e.pageY;
-    $("div").animate({top: y-15, left: x-15});
-  });
+  
+    targetOk = 0
+    newNode = ""
+    
+    for(i=1; i<numColumns; i++) {
+    
+    	if (adjacencyList[currentRow][i] === e.currentTarget.id ) {
+       		newNode = adjacencyList[currentRow][i];
+            targetOk = 1;
+    }
+    
+    }
+    
+    
+    if (targetOk == 1) {
+    	var x = e.pageX;
+    	var y = e.pageY;
+    	$("div").animate({top: y-15, left: x-15});
+       
+       current = newNode;
+       
+    } else {
+    	alert("You have clicked on an invalid location. Please try again");
+    }
+    
+  }
+  ); 
+  
 });
-</script> 
+</script>
 </head>
 <body>
 
 <p style='position:absolute; top:60px; left:100px'>Start!</p>
 
-<button style='position:absolute; top:100px; left:100px'></button>
-<button style='position:absolute; top:100px; left:200px'></button>
-<button style='position:absolute; top:100px; left:300px'></button>
-<button style='position:absolute; top:100px; left:400px'></button>
-<button style='position:absolute; top:200px; left:100px'></button>
-<button style='position:absolute; top:200px; left:400px'></button>
-<button style='position:absolute; top:300px; left:100px'></button>
-<button style='position:absolute; top:300px; left:200px'></button>
-<button style='position:absolute; top:300px; left:300px'></button>
-<button style='position:absolute; top:300px; left:400px'></button>
+<button id = "b1" style='position:absolute; top:100px; left:100px'></button>
+<button id = "b2" style='position:absolute; top:100px; left:200px'></button>
+<button id = "b3" style='position:absolute; top:100px; left:300px'></button>
+<button id = "b4" style='position:absolute; top:100px; left:400px'></button>
+<button id = "b5" style='position:absolute; top:200px; left:100px'></button>
+<button id = "b6" style='position:absolute; top:200px; left:400px'></button>
+<button id = "b7" style='position:absolute; top:300px; left:100px'></button>
+<button id = "b8" style='position:absolute; top:300px; left:200px'></button>
+<button id = "b9" style='position:absolute; top:300px; left:300px'></button>
+<button id = "b10" style='position:absolute; top:300px; left:400px'></button>
 
 <p style='position:absolute; top:340px; left:400px'>End!</p>
 
@@ -55,4 +124,3 @@ $(document).ready(function(){
 
 </body>
 </html>
-
