@@ -24,7 +24,7 @@ var numColumns = 3;
 var currentRow = 0;
 
 let adjacencyList = [
-	["b1","b2","b5"],
+    ["b1","b2","b5"],
     ["b2","b1","b3"],
     ["b3","b2","b4"],
     ["b4","b3","b6"],
@@ -36,7 +36,6 @@ let adjacencyList = [
 ];
     
 current = adjacencyList[0][0]; //starting point
-admissible = adjacencyList[0][1]; 
 
 $(document).ready(function(){
   $("button").hover(function(e){
@@ -88,7 +87,7 @@ $(document).ready(function(){
     if (targetOk == 1) {
     	var x = e.pageX;
     	var y = e.pageY;
-    	$("div").animate({top: y-15, left: x-15});
+    	$("img").animate({top: y-15, left: x-15});
        
        current = newNode;
        
@@ -128,7 +127,7 @@ viewBox="0 0 500 500" >
 <p style='position:absolute; top:340px; left:400px'>End!</p>
 
 
-<div id="character" style="border-radius:50%; background:palevioletred; height:30px; width: 30px; position:absolute; top:100px; left:100px"></div>
+<img src="smiley.gif" style="height:30px; width: 30px; position:absolute; top:100px; left:100px"></img>
 
 </body>
 </html>
